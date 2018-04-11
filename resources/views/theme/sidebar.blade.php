@@ -8,7 +8,7 @@
 
             <li>
 
-                <a href="{{ url('/my-home') }}"><i class="fa fa-dashboard fa-fw"></i> 首页</a>
+                <a href="{{ url('/home') }}"><i class="fa fa-dashboard fa-fw"></i> 首页</a>
 
             </li>
 

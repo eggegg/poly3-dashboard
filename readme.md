@@ -10,8 +10,11 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 - php artisian key:generate
 ```
 
-设置.env文件里的数据库,执行数据库的初始化
+设置.env里用来跳转poly的环境变量
+APP_POLY_LOGIN_URL=
+APP_POLY_CHECK_URL=
 
+设置.env文件里的数据库,执行数据库的初始化
 
 ```php
 php artisan migrate
@@ -22,5 +25,6 @@ php artisan migrate
 ```php
 php artisan db:seed
 ```
+
 
 All Done!

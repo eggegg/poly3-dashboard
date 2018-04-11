@@ -16,18 +16,13 @@ Route::get('/', function () {
 });
 
 
-Route::get('my-home', 'HomeController@myHome');
-Route::get('my-user', 'HomeController@myUser');
-
-
-
 //Auth::routes();
 
 Route::get('login', [
     'as' => 'login',
     'uses' => 'Auth\LoginController@showLoginForm'
 ]);
-Route::get('login_check', [
+Route::get('login_check/{token}', [
     'as' => '',
     'uses' => 'Auth\LoginController@login'
 ]);

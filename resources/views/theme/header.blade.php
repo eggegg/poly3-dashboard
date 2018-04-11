@@ -12,7 +12,7 @@
 
     </button>
 
-    <a class="navbar-brand" href="{{ url('/my-home') }}">{{ config('app.name', 'Laravel') }}</a>
+    <a class="navbar-brand" href="{{ url('/home') }}">{{ config('app.name', 'Laravel') }}</a>
 
 </div>
 
