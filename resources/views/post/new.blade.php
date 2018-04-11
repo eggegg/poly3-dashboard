@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('theme.default')
 
 @section('title', 'Create')
 
 @section('content')
 
-    <div class="row">
+    <div class="row mt20">
         <div class="col-md-5">
             <h3>Create</h3>
         </div>

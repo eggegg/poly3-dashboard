@@ -16,7 +16,7 @@
 
 
 
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
 
 
@@ -74,6 +74,14 @@
 
     <div id="page-wrapper">
 
+        <div id="flash-msg">
+            @include('flash::message')
+        </div>
+
+        <div class="panel">
+
+        </div>
+        
         @yield('content')
 
     </div>
@@ -112,7 +120,7 @@
 
 <script src="{!! asset('theme/vendor/morrisjs/morris.min.js') !!}"></script>
 
-<script src="{!! asset('theme/data/morris-data.js') !!}"></script>
+{{--<script src="{!! asset('theme/data/morris-data.js') !!}"></script>--}}
 
 
 
@@ -120,6 +128,16 @@
 
 <script src="{!! asset('theme/dist/js/sb-admin-2.js') !!}"></script>
 
+<!-- Scripts -->
+
+@stack('scripts')
+
+<script>
+    $(function () {
+        // flash auto hide
+        $('#flash-msg .alert').not('.alert-danger, .alert-important').delay(6000).slideUp(500);
+    })
+</script>
 
 
 </body>

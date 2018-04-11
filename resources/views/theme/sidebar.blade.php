@@ -4,51 +4,59 @@
 
         <ul class="nav" id="side-menu">
 
-            <li class="sidebar-search">
 
-                <div class="input-group custom-search-form">
-
-                    <input type="text" class="form-control" placeholder="Search...">
-
-                    <span class="input-group-btn">
-
-                    <button class="btn btn-default" type="button">
-
-                        <i class="fa fa-search"></i>
-
-                    </button>
-
-                </span>
-
-                </div>
-
-                <!-- /input-group -->
-
-            </li>
 
             <li>
 
-                <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                <a href="{{ url('/my-home') }}"><i class="fa fa-dashboard fa-fw"></i> 首页</a>
 
             </li>
 
-            <li>
+            @if (Auth::check())
 
-                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+
+                <li>
+                <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> 用户管理<span class="fa arrow"></span></a>
 
                 <ul class="nav nav-second-level">
 
-                    <li>
+                    @can('view_users')
+                        <li>
+                            <a class="{{ Request::is('users*') ? 'active' : '' }}" href="{{ route('users.index') }}">
+                                <span class="text-info glyphicon glyphicon-user"></span> User
+                            </a>
+                        </li>
+                    @endcan
 
-                        <a href="flot.html">Flot Charts</a>
+                    @can('view_roles')
+                        <li>
+                            <a class="{{ Request::is('roles*') ? 'active' : '' }}" href="{{ route('roles.index') }}">
+                                <span class="text-danger glyphicon glyphicon-lock"></span> Role
+                            </a>
+                        </li>
+                    @endcan
 
-                    </li>
+                </ul>
 
-                    <li>
+                <!-- /.nav-second-level -->
+            </li>
 
-                        <a href="morris.html">Morris.js Charts</a>
 
-                    </li>
+
+            <li>
+
+                <a href="#"><i class="fa fa-files-o fa-fw"></i> 内容管理<span class="fa arrow"></span></a>
+
+                <ul class="nav nav-second-level">
+
+                    @can('view_posts')
+                        <li>
+                            <a class="{{ Request::is('posts*') ? 'active' : '' }}" href="{{ route('posts.index') }}">
+                                <span class="text-success glyphicon glyphicon-text-background"></span> Posts
+                            </a>
+                        </li>
+                    @endcan
+
 
                 </ul>
 
@@ -56,59 +64,8 @@
 
             </li>
 
-            <li>
 
-                <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
-
-            </li>
-
-            <li>
-
-                <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-
-            </li>
-
-            <li>
-
-                <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
-
-                <ul class="nav nav-second-level">
-
-                    <li>
-
-                        <a href="panels-wells.html">Panels and Wells</a>
-
-                    </li>
-
-                </ul>
-
-                <!-- /.nav-second-level -->
-
-            </li>
-
-            <li>
-
-                <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-
-                <ul class="nav nav-second-level">
-
-                    <li>
-
-                        <a href="blank.html">Blank Page</a>
-
-                    </li>
-
-                    <li>
-
-                        <a href="login.html">Login Page</a>
-
-                    </li>
-
-                </ul>
-
-                <!-- /.nav-second-level -->
-
-            </li>
+            @endif
 
         </ul>
 

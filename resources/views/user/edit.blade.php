@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('theme.default')
 
 @section('title', 'Edit User ' . $user->first_name)
 

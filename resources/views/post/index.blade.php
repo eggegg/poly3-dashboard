@@ -1,18 +1,24 @@
-@extends('layouts.app')
+@extends('theme.default')
 
 @section('title', 'Posts')
 
 @section('content')
     <div class="row">
-        <div class="col-md-5">
-            <h3 class="modal-title">{{ $result->total() }} {{ str_plural('Post', $result->count()) }} </h3>
-        </div>
-        <div class="col-md-7 page-action text-right">
-            @can('add_posts')
-                <a href="{{ route('posts.create') }}" class="btn btn-primary btn-sm"> <i class="glyphicon glyphicon-plus-sign"></i> Create</a>
-            @endcan
-        </div>
+            <div class="col-md-5">
+                <h3 class="modal-title">{{ $result->total() }} {{ str_plural('Post', $result->count()) }} </h3>
+            </div>
+
+            <div class="col-md-7 page-action text-right">
+                @can('add_posts')
+                    <a href="{{ route('posts.create') }}" class="btn btn-primary btn-sm"> <i class="glyphicon glyphicon-plus-sign"></i> Create</a>
+                @endcan
+            </div>
+
     </div>
+
+
+
+    <!-- /.row -->
 
     <div class="result-set">
         <table class="table table-bordered table-striped table-hover" id="data-table">
