@@ -11,6 +11,7 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 ```
 
 设置.env里用来跳转poly的环境变量
+APP_URL=
 APP_POLY_LOGIN_URL=
 APP_POLY_CHECK_URL=
 

@@ -22,7 +22,7 @@ Route::get('login', [
     'as' => 'login',
     'uses' => 'Auth\LoginController@showLoginForm'
 ]);
-Route::get('login_check/{token}', [
+Route::get('/login_check/{token}', [
     'as' => '',
     'uses' => 'Auth\LoginController@login'
 ]);

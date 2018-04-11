@@ -7,7 +7,6 @@ use App\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
-use League\Flysystem\Config;
 use Symfony\Component\HttpFoundation\Request;
 
 class LoginController extends Controller
@@ -54,13 +53,12 @@ class LoginController extends Controller
 
 
     /**
-     * login by hand code
+     * /login 跳转poly登录
      *
      * @return mixed
      */
     public function showLoginForm()
     {
-
         $polyLoginUrl = env('APP_POLY_LOGIN_URL', false);
         if(!$polyLoginUrl) {
             echo 'wrong login url';
@@ -69,18 +67,11 @@ class LoginController extends Controller
         $redirectLoginUrl = $polyLoginUrl.'&callback='.url('/login_check').'/';
         header("location: $redirectLoginUrl");
         exit;
-
-        Auth::logout();
-
-        $user = User::find(1);
-
-
-
     }
 
     /**
+     * /login_check/{token} 跳转之后处理登录逻辑
      *
-     * http://l5a.test/login_check/&auth=qZaU7JkR1523oahPezwde427Simp7TH7e63017d7321c88f9&pre_url=
      */
     public function login($token)
     {
@@ -139,7 +130,7 @@ class LoginController extends Controller
 
         // 获取到了合法的username
         if(!$authUsername) {
-            echo 'login failure';
+            die('login failure');
         }
 
 
@@ -155,17 +146,20 @@ class LoginController extends Controller
                 'email' => 'example'.time().'@test.com',
             ]);
 
+            //TODO 需要查出用户email等信息
+
+            //设置默认权限
             $myUser->assignRole('Admin');
 
         }
 
         //登录并跳转
-        $userdata = array(
+        $userData = array(
             'name'     => $myUser->name,
             'password'  => 'secret'
         );
 
-        if (Auth::attempt($userdata)) {
+        if (Auth::attempt($userData)) {
             // validation successful!
             return Redirect::to('/home');
 
